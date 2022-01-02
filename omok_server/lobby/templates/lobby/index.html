@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>LOBBY</title>
+  </head>
+
+  <body>
+    <h1>This is Lobby Page</h1>
+
+  {% for p in liveRooms %}
+    <hr>
+      <h2>{{ p.roomName }}</h2>
+      <h4>{{ p.hostName }}</h4>
+      <h4>{{ p.created_at }}</h4>
+    </hr>
+  {% endfor %}
+  </body>
+</html>
