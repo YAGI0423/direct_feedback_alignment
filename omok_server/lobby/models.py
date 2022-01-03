@@ -10,3 +10,7 @@ class LiveRoom(models.Model):
 
     def __str__(self):
         return f'[{self.pk}] {self.roomName} ({self.hostName})'
+
+
+    def get_absolute_url(self):
+        return f'/lobby/{self.pk}/'

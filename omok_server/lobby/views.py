@@ -13,3 +13,14 @@ def index(request):
             'liveRooms': liveRooms,
         }
     )
+
+def room_page(request, pk):
+    roomInfo = LiveRoom.objects.get(pk=pk)
+
+    return render(
+        request,
+        'lobby/gameRoom.html',
+        {
+            'roomInfo': roomInfo,
+        }
+    )
