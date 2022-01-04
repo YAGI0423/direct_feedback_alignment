@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class LiveRoom(models.Model):
+class RoomList(models.Model):
     roomName = models.CharField(max_length=30)
     hostName = models.CharField(max_length=10)
     gameStatus = models.BooleanField(default=False)

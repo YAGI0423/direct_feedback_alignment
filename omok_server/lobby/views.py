@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
 # Create your views here.
-from .models import LiveRoom
+from .models import RoomList
 
 def index(request):
-    liveRooms = LiveRoom.objects.all().order_by('-pk')
+    liveRooms = RoomList.objects.all().order_by('-pk')
 
     return render(
         request,
@@ -15,7 +15,7 @@ def index(request):
     )
 
 def room_page(request, pk):
-    roomInfo = LiveRoom.objects.get(pk=pk)
+    roomInfo = RoomList.objects.get(pk=pk)
 
     return render(
         request,

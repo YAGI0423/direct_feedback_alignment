@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import LiveRoom
+from .models import RoomList
 
-admin.site.register(LiveRoom)
+admin.site.register(RoomList)
