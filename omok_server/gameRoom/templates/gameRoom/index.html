@@ -2,10 +2,16 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8">
-    <title>gameRoom</title>
+    <title>{{ roomInfo.roomName }} - Room</title>
   </head>
-  
+
   <body>
-    <h1>Hello</h1>
+    <nav>
+      <a href="/lobby/">Back To Lobby</a>
+    </nav>
+
+    <h1>{{ roomInfo.roomName }}</h1>
+    <h4>{{ roomInfo.created_at }}</h4>
+    <p>{{ roomInfo.hostName }}</p>
   </body>
 </html>
