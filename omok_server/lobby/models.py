@@ -13,4 +13,4 @@ class RoomList(models.Model):
 
 
     def get_absolute_url(self):
-        return f'/lobby/{self.pk}/'
+        return f'/gameRoom/{self.pk}/'
