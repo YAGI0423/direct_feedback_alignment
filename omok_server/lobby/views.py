@@ -1,4 +1,4 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import ListView   #목록 생성
@@ -9,13 +9,13 @@ class RoomList(ListView):
     ordering = '-pk'
     template_name = 'lobby/index.html'
 
-# def index(request):
-#     liveRooms = RoomList.objects.all().order_by('-pk')
-#
-#     return render(
-#         request,
-#         'lobby/index.html',
-#         {
-#             'liveRooms': liveRooms,
-#         }
-#     )
+def gameRoom(request, pk):
+    roomInfo = RoomList.objects.get(pk=pk)
+
+    return render(
+        request,
+        'lobby/room.html',
+        {
+            'roomInfo': roomInfo,
+        }
+    )
