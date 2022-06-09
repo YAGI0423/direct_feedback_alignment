@@ -129,5 +129,3 @@ dmypy.json
 .pyre/
 
 #Personal file
-superUser.txt
-migrations/
