@@ -26,16 +26,26 @@ class WebController:
         self.driver.maximize_window()    #창 크기 최대화
         self.driver.get(url)    #url 접속
 
+    def get_element(self, by, value, wait_time=1):
+        #waiting for up load element
+        #return [success load ele], [element]
+
+        s = time.time()
+
+        while (time.time() - s) < wait_time:
+            try:
+                ele = self.driver.find_element(by=by, value=value)
+                return True, ele
+            except:
+                pass
+        return False, None
+
 
 if __name__ == '__main__':
     web_ctrl = WebController()
 
-    web_ctrl.open_browser('https://jstris.jezevec10.com/?play=10')
+    web_ctrl.open_browser('https://jstris.jezevec10.com/login')
 
-    while True:
-        try:
-            bot_set_ele = web_ctrl.driver.find_element(by=By.CLASS_NAME, value='bcContent')
-            break
-        except:
-            pass
-    print(bot_set_ele)
+    # success, login_btn_ele = web_ctrl.get_element(by=By.)
+    # success, ele = web_ctrl.get_element(by=By.CLASS_NAME, value='bcContent', wait_time=5)
+    # print(success, ele)
