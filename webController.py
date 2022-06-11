@@ -1,4 +1,7 @@
+import time
+
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 class WebController:
@@ -27,4 +30,12 @@ class WebController:
 if __name__ == '__main__':
     web_ctrl = WebController()
 
-    web_ctrl.open_browser('https://www.google.com/')
+    web_ctrl.open_browser('https://jstris.jezevec10.com/?play=10')
+
+    while True:
+        try:
+            bot_set_ele = web_ctrl.driver.find_element(by=By.CLASS_NAME, value='bcContent')
+            break
+        except:
+            pass
+    print(bot_set_ele)
