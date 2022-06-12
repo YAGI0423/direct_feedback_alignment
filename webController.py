@@ -46,6 +46,14 @@ if __name__ == '__main__':
 
     web_ctrl.open_browser('https://jstris.jezevec10.com/login')
 
+    success, id_text_ele = web_ctrl.get_element(by=By.NAME, value='name', wait_time=2)
+    success, pw_text_ele = web_ctrl.get_element(by=By.NAME, value='password', wait_time=2)
+
+    id_text_ele.send_keys('9945735@naver.com')
+    pw_text_ele.send_keys('1q2w3e4r5t6y!Q@W#E$R%T^Y')
+
+    
+
     # success, login_btn_ele = web_ctrl.get_element(by=By.)
     # success, ele = web_ctrl.get_element(by=By.CLASS_NAME, value='bcContent', wait_time=5)
     # print(success, ele)
