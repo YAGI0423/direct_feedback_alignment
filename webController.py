@@ -47,8 +47,8 @@ class WebController:
         id_text_ele.send_keys(id)
         pw_text_ele.send_keys(pw)
         
-        success, log_btn_ele = self.get_element(by=By.CLASS_NAME, value='btn-primary', wait_time=2)
-        log_btn_ele.click()
+        success, log_btn = self.get_element(by=By.CLASS_NAME, value='btn-primary', wait_time=2)
+        log_btn.click()
 
 
 if __name__ == '__main__':
@@ -56,7 +56,12 @@ if __name__ == '__main__':
 
     web_ctrl.open_browser('https://jstris.jezevec10.com/login')
     web_ctrl.act_login(id='9945735@naver.com', pw='1q2w3e4r5t6y!Q@W#E$R%T^Y')
+    
+    time.sleep(2)
 
-    # success, login_btn_ele = web_ctrl.get_element(by=By.)
-    # success, ele = web_ctrl.get_element(by=By.CLASS_NAME, value='bcContent', wait_time=5)
-    # print(success, ele)
+    web_ctrl.driver.get('https://jstris.jezevec10.com/?play=10')
+    
+    success, delete_bot_btn = web_ctrl.get_element(by=By.CLASS_NAME, value='fa-trash-alt', wait_time=3)    #delete init bot
+    delete_bot_btn.click()
+
+    
