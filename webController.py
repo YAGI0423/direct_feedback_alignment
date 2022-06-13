@@ -2,6 +2,7 @@ import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 
 class WebController:
@@ -60,8 +61,22 @@ if __name__ == '__main__':
     time.sleep(2)
 
     web_ctrl.driver.get('https://jstris.jezevec10.com/?play=10')
+    time.sleep(5)
     
     success, delete_bot_btn = web_ctrl.get_element(by=By.CLASS_NAME, value='fa-trash-alt', wait_time=3)    #delete init bot
     delete_bot_btn.click()
 
     
+    success, add_bot_btn = web_ctrl.get_element(by=By.CLASS_NAME, value='add-btn', wait_time=1)
+    add_bot_btn.click()
+
+    success, bot_list_ele = web_ctrl.get_element(by=By.CSS_SELECTOR, value='.content select', wait_time=1)
+    bot_list_ele = Select(bot_list_ele)
+    bot_list_ele.select_by_index(2)
+
+    success, bot_name_ele = web_ctrl.get_element(by=By.CSS_SELECTOR, value='.content input', wait_time=1)
+    bot_name_ele.clear()
+    bot_name_ele.send_keys('BOT1')
+
+    success, apply_btn = web_ctrl.get_element(by=By.CLASS_NAME, value='apply-btn', wait_time=1)
+    apply_btn.click()
