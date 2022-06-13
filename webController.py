@@ -40,22 +40,22 @@ class WebController:
                 pass
         return False, None
 
+    def act_login(self, id, pw):
+        success, id_text_ele = self.get_element(by=By.NAME, value='name', wait_time=2)
+        success, pw_text_ele = self.get_element(by=By.NAME, value='password', wait_time=2)
+
+        id_text_ele.send_keys(id)
+        pw_text_ele.send_keys(pw)
+        
+        success, log_btn_ele = self.get_element(by=By.CLASS_NAME, value='btn-primary', wait_time=2)
+        log_btn_ele.click()
+
 
 if __name__ == '__main__':
     web_ctrl = WebController()
 
     web_ctrl.open_browser('https://jstris.jezevec10.com/login')
-
-    success, id_text_ele = web_ctrl.get_element(by=By.NAME, value='name', wait_time=2)
-    success, pw_text_ele = web_ctrl.get_element(by=By.NAME, value='password', wait_time=2)
-
-    id_text_ele.send_keys('9945735@naver.com')
-    pw_text_ele.send_keys('1q2w3e4r5t6y!Q@W#E$R%T^Y')
-    
-    success, log_btn_ele = web_ctrl.get_element(by=By.CLASS_NAME, value='btn-primary', wait_time=2)
-    log_btn_ele.click()
-
-    
+    web_ctrl.act_login(id='9945735@naver.com', pw='1q2w3e4r5t6y!Q@W#E$R%T^Y')
 
     # success, login_btn_ele = web_ctrl.get_element(by=By.)
     # success, ele = web_ctrl.get_element(by=By.CLASS_NAME, value='bcContent', wait_time=5)
