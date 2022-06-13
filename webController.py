@@ -1,4 +1,5 @@
 import time
+import random
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -51,32 +52,40 @@ class WebController:
         success, log_btn = self.get_element(by=By.CLASS_NAME, value='btn-primary', wait_time=2)
         log_btn.click()
 
+    def setting_bot(self):
+        success, delete_bot_btn = self.get_element(by=By.CLASS_NAME, value='fa-trash-alt', wait_time=3)    #delete init bot
+        delete_bot_btn.click()
+
+        for idx in range(4):
+            success, add_bot_btn = self.get_element(by=By.CLASS_NAME, value='add-btn', wait_time=1)
+            add_bot_btn.click()
+
+            success, bot_list_ele = self.get_element(by=By.CSS_SELECTOR, value='.content select', wait_time=1)
+            bot_list_ele = Select(bot_list_ele)
+            bot_list_ele.select_by_index(random.randint(0, 3))
+
+            success, bot_name_ele = self.get_element(by=By.CSS_SELECTOR, value='.content input', wait_time=1)
+            bot_name_ele.clear()
+            bot_name_ele.send_keys(f'BOT {idx}')
+
+            success, apply_btn = self.get_element(by=By.CLASS_NAME, value='apply-btn', wait_time=1)
+            apply_btn.click()
+
+        success, apply_btn = self.get_element(by=By.CLASS_NAME, value='apply-btn', wait_time=1)
+        apply_btn.click()
+
+
 
 if __name__ == '__main__':
     web_ctrl = WebController()
 
     web_ctrl.open_browser('https://jstris.jezevec10.com/login')
     web_ctrl.act_login(id='9945735@naver.com', pw='1q2w3e4r5t6y!Q@W#E$R%T^Y')
-    
     time.sleep(2)
 
     web_ctrl.driver.get('https://jstris.jezevec10.com/?play=10')
-    time.sleep(5)
-    
-    success, delete_bot_btn = web_ctrl.get_element(by=By.CLASS_NAME, value='fa-trash-alt', wait_time=3)    #delete init bot
-    delete_bot_btn.click()
+    time.sleep(4)
+    web_ctrl.setting_bot()
 
     
-    success, add_bot_btn = web_ctrl.get_element(by=By.CLASS_NAME, value='add-btn', wait_time=1)
-    add_bot_btn.click()
 
-    success, bot_list_ele = web_ctrl.get_element(by=By.CSS_SELECTOR, value='.content select', wait_time=1)
-    bot_list_ele = Select(bot_list_ele)
-    bot_list_ele.select_by_index(2)
-
-    success, bot_name_ele = web_ctrl.get_element(by=By.CSS_SELECTOR, value='.content input', wait_time=1)
-    bot_name_ele.clear()
-    bot_name_ele.send_keys('BOT1')
-
-    success, apply_btn = web_ctrl.get_element(by=By.CLASS_NAME, value='apply-btn', wait_time=1)
-    apply_btn.click()
