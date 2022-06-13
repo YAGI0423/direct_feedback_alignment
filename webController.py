@@ -3,6 +3,7 @@ import random
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 
 
@@ -87,5 +88,6 @@ if __name__ == '__main__':
     time.sleep(4)
     web_ctrl.setting_bot()
 
-    
+    success, start_btn = web_ctrl.get_element(by=By.ID, value='res', wait_time=1)
+    start_btn.send_keys(Keys.F12)
 
