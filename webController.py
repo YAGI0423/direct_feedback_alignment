@@ -51,6 +51,9 @@ if __name__ == '__main__':
 
     id_text_ele.send_keys('9945735@naver.com')
     pw_text_ele.send_keys('1q2w3e4r5t6y!Q@W#E$R%T^Y')
+    
+    success, log_btn_ele = web_ctrl.get_element(by=By.CLASS_NAME, value='btn-primary', wait_time=2)
+    log_btn_ele.click()
 
     
 
