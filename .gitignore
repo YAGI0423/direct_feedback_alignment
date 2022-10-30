@@ -128,4 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#Personal file
+#personal
+/mnist_dataset/mnist_dataset.pk
