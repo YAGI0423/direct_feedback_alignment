@@ -13,6 +13,7 @@
 ***
 
 
+
 ***
 + 해당 프로젝트는 Arild Nokland의 「Direct Feedback Alignment Provides Learning in Deep Neural Networks」(2016)을 바탕으로 하고 있습니다.
 
